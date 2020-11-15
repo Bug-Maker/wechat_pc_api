@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import glob
 import wechat
 import time
+import os
 # from wechat import WeChatManager, MessageType
 
 # 加载libs包中的hook文件
@@ -29,7 +30,7 @@ def on_recv(client_id, message_type, message_data):
     #
     #     # 本地图片库中搜索图片
     #     img_text = message_data['msg']
-    #     for name in glob.glob(r'E:\workspace\python\tran\emoji\*'+img_text+'*.jpg'):
+    #     for name in glob.glob(r'../../sourceimages\*'+img_text+'*.jpg'):
     #         imgs.append(name)
     #         print("找到图片："+name)
     #     for img in imgs[:6]:
@@ -42,13 +43,14 @@ def on_recv(client_id, message_type, message_data):
 
         # 本地图片库中搜索图片
         img_text = message_data['msg']
-        for name in glob.glob(r'E:\workspace\python\tran\emoji\*'+img_text+'*.jpg'):
+        for name in glob.glob(r'../../sourceimages\*'+img_text+'*.jpg'):
             imgs.append(name)
             print("找到图片："+name)
         for img in imgs[:6]:
-            wechat_manager.send_image(client_id, message_data['from_wxid'], img)
+            # 拼接图片绝对路径
+            wechat_manager.send_image(client_id, message_data['from_wxid'], os.path.abspath('.') + "\\" + img)
             time.sleep(0.3)
-            print('开始发送表情： ', img)
+            print('开始发送表情： ', os.path.abspath('.') + "\\" + img)
         imgs.clear()
 
 # 微信关闭时函数回调

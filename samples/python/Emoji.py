@@ -37,11 +37,11 @@ def download_biaoqingbaos(url, path):
         image = img.get('data-original')
         title = img.get('title')
         print('下载图片： ', title)
-
         try:
             # 分离文件名和扩展名，返回元组，取后缀名； wb表示以二进制写方式打开文件
             with open(path + title + os.path.splitext(image)[-1], 'wb') as f:
                 img = requests.get(image).content
+                # if title == "草莓果酱ox动图表情包":
                 f.write(img)
         except OSError:
             print('length  failed')
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     urls = [_url.format(page=page) for page in range(1, 200+1)]
 
     queue = Queue()
-    path = r'E:\workspace\python\tran\emoji' "\\"
+    path = r'../../sourceimages' "\\"
 
     # 创建线程
     for x in range(10):

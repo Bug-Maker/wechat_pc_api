@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 import multiprocessing
 
-path = r'E:\workspace\python\tran\emoji' "\\"
+path = r'../../sourceimages' "\\"
 
 def download_biaoqingbaos(url):
 

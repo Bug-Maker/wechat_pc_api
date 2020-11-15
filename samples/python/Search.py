@@ -1,3 +1,5 @@
+# itchat包已失效
+
 import glob
 import time
 
