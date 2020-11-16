@@ -43,6 +43,7 @@ def on_recv(client_id, message_type, message_data):
 
         # 本地图片库中搜索图片
         img_text = message_data['msg']
+        # 返回指定路径中匹配*img_text*的图片
         for name in glob.glob(r'../../sourceimages\*'+img_text+'*.jpg'):
             imgs.append(name)
             print("找到图片："+name)
