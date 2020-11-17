@@ -1,9 +1,14 @@
-# -*- coding: utf-8 -*-
 """
+* wechat.py
+* this class is for encapsulating wechat hook
+* original author: wechat_pc_api(git)
+* copyright USTC
+* 14.11.2020
+
 微信hook原理：进程注入（逆向工程）。
-就是让你的目标软件无声的加载你自己编写的dll文件，然后运行，这样你的dll就变成微信程序的一部分，可以读取它的任何数据，
-来进行接下来的拦截过程。
+让微信加载编写的dll文件，然后运行，这样dll文件就变成微信程序的一部分，可以读取它的任何数据，来进行接下来的拦截过程。
 """
+
 
 import json
 import sys

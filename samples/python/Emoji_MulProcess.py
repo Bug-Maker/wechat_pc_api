@@ -1,3 +1,11 @@
+"""
+* Emoji_MulProcess.py
+* this class is for crawl emoji picture through MulProcess
+* created by SA20225480 吴聪
+* copyright USTC
+* 10.11.2020
+"""
+
 import os
 from time import time
 
@@ -7,6 +15,10 @@ import multiprocessing
 
 path = r'../../sourceimages' "\\"
 
+"""
+功能：写文件
+@:param url 请求url
+"""
 def download_biaoqingbaos(url):
 
     response = requests.get(url)

@@ -1,3 +1,11 @@
+"""
+* Emoji_MulProcess.py
+* this class is for generating mosaic picture
+* created by SA20225338 罗昊
+* copyright USTC
+* 15.11.2020
+"""
+
 # OpenCV库，用于解决计算机视觉问题的py库
 import cv2
 # python自带的操作文件的相关模块
@@ -12,7 +20,10 @@ from tqdm import tqdm
 from itertools import product
 
 
-'''命令行参数解析'''
+"""
+功能：命令行参数解析
+@:return 命令行参数
+"""
 def parseArgs():
     # 创建ArgumentParser()对象
     parser = argparse.ArgumentParser('拼马赛克图片')
@@ -26,7 +37,13 @@ def parseArgs():
     return args
 
 
-'''读取所有源图片并计算对应的颜色平均值'''
+"""
+功能：读取所有源图片并计算对应的颜色平均值
+@:param sourcepath 源路径
+@:param blocksize 块大小
+@:return1 修改大小后的图片列表
+@:return2 图片列表对应的颜色均值列表
+"""
 def readSourceImages(sourcepath, blocksize):
     print('Start to read source images')
 
@@ -63,7 +80,10 @@ def readSourceImages(sourcepath, blocksize):
     return sourceimages, np.array(avgcolors)
 
 
-'''主函数'''
+"""
+功能：主函数
+@:param args 命令行参数
+"""
 def main(args):
 
     # 读取图片文件，返回np.array类型

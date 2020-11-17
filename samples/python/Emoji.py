@@ -1,3 +1,11 @@
+"""
+* Emoji.py
+* this class is for crawl emoji picture through MulThreading
+* created by SA20225337 罗汉雄
+* copyright USTC
+* 05.11.2020
+"""
+
 import os
 from time import time
 
@@ -9,6 +17,11 @@ from threading import Thread
 
 class DownloadBiaoqingbao(Thread):
 
+    """
+    功能：类初始化
+    @:param queue 请求队列
+    @:param path 路径名
+    """
     def __init__(self, queue, path):
         Thread.__init__(self)
         self.queue = queue
@@ -16,6 +29,9 @@ class DownloadBiaoqingbao(Thread):
         if not os.path.exists(path):
             os.makedirs(path)
 
+    """
+    功能：线程执行函数
+    """
     def run(self):
         while True:
             url = self.queue.get()
@@ -26,6 +42,11 @@ class DownloadBiaoqingbao(Thread):
                 self.queue.task_done()
 
 
+"""
+功能：写文件
+@:param url 请求url
+@:param path 路径名
+"""
 def download_biaoqingbaos(url, path):
 
     response = requests.get(url)

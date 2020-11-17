@@ -1,4 +1,10 @@
-# -*- coding: utf-8 -*-
+"""
+* demo.py
+* this class is for achieving wechat robot
+* created by SA20225481 吴佳佳
+* copyright USTC
+* 12.11.2020
+"""
 
 # 把下一个新版本的特性导入到当前版本，就可以在当前版本中测试一些新版本的特性
 from __future__ import unicode_literals
@@ -14,12 +20,21 @@ wechat_manager = wechat.WeChatManager(libs_path='../../libs')
 
 imgs = []
 
-# 微信连接时函数回调
+"""
+功能：微信连接时函数回调
+@:param client_id 客户端id
+"""
 @wechat.CONNECT_CALLBACK(in_class=False)
 def on_connect(client_id):
     print('[on_connect] client_id: {0}'.format(client_id))
 
-# 微信接收到消息时函数回调
+
+"""
+功能：微信接收到消息时函数回调
+@:param client_id 客户端id
+@:param message_type 消息类型
+@:param message_data 消息内容
+"""
 @wechat.RECV_CALLBACK(in_class=False)
 def on_recv(client_id, message_type, message_data):
     print('[on_recv] client_id: {0}, message_type: {1}, message:{2}'.format(client_id,
@@ -54,7 +69,11 @@ def on_recv(client_id, message_type, message_data):
             print('开始发送表情： ', os.path.abspath('.') + "\\" + img)
         imgs.clear()
 
-# 微信关闭时函数回调
+
+"""
+功能：微信关闭时函数回调
+@:param client_id 客户端id
+"""
 @wechat.CLOSE_CALLBACK(in_class=False)
 def on_close(client_id):
     print('[on_close] client_id: {0}'.format(client_id))
@@ -63,6 +82,12 @@ def on_close(client_id):
 # 这里类回调， 函数回调与类回调可以混合使用
 class LoginTipBot(wechat.CallbackHandler):
 
+    """
+    功能：微信接收到消息时函数回调
+    @:param client_id 客户端id
+    @:param message_type 消息类型
+    @:param message_data 消息内容
+    """
     @wechat.RECV_CALLBACK(in_class=True)
     def on_message(self, client_id, message_type, message_data):
         # 判断登录成功后，就向文件助手发条消息
