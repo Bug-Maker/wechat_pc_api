@@ -59,10 +59,13 @@ def readSourceImages(sourcepath, blocksize):
         # image = cv2.imread(path, cv2.IMREAD_COLOR)
 
         # 解决办法：先用np.fromfile()读取为np.uint8格式，再使用cv2.imdecode()解码。
-        image = cv2.imdecode(np.fromfile(path, dtype=np.uint8), -1)
+        ffile = np.fromfile(path, dtype=np.uint8)
+
+        if ffile.any():
+            image = cv2.imdecode(ffile, -1)
 
         # shape[0]表示图片高度像素，[1]表示宽度像素，[2]为3时表示彩色图片
-        if image is None or image.shape[-1] != 3:
+        if not ffile.any() or image is None or image.shape[-1] != 3:
             continue
 
         # 重置图片大小为blocksize*blocksize
@@ -124,7 +127,7 @@ def main(args):
     cv2.destroyAllWindows()
 
     print('Finish making photomosaic, result saved in %s' % args.outputpath)
-
+ 
 
 '''run'''
 if __name__ == '__main__':

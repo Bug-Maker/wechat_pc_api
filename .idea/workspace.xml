@@ -124,8 +124,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.Photo_mosaic" />
-        <item itemvalue="Python.demo" />
         <item itemvalue="Python.Emoji_MulProcess" />
+        <item itemvalue="Python.demo" />
         <item itemvalue="Python.Emoji" />
       </list>
     </recent_temporary>
@@ -155,5 +155,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
