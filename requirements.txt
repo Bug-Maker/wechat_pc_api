@@ -1,0 +1,5 @@
+bs4==0.0.1
+numpy==1.19.4
+opencv-python==4.4.0.46
+requests==2.24.0
+tqdm==4.51.0
